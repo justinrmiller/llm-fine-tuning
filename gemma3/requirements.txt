@@ -1,0 +1,6 @@
+# you may need to install torch manually first
+torch
+
+transformers
+unsloth
+vllm
