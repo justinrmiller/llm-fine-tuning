@@ -1,4 +1,4 @@
-# you may need to install torch manually first
+datasets
 torch
 
 transformers

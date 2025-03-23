@@ -1,0 +1,114 @@
+🦥 Unsloth: Will patch your computer to enable 2x faster free finetuning.
+🦥 Unsloth Zoo will now patch everything to make training faster!
+INFO 03-23 14:24:49 [__init__.py:256] Automatically detected platform cuda.
+==((====))==  Unsloth 2025.3.18: Fast Gemma3 patching. Transformers: 4.50.0. vLLM: 0.8.1.
+   \\   /|    NVIDIA GeForce RTX 3060. Num GPUs = 1. Max memory: 11.656 GB. Platform: Linux.
+O^O/ \_/ \    Torch: 2.6.0+cu124. CUDA: 8.6. CUDA Toolkit: 12.4. Triton: 3.2.0
+\        /    Bfloat16 = TRUE. FA [Xformers = 0.0.29.post2. FA2 = False]
+ "-____-"     Free license: http://github.com/unslothai/unsloth
+Unsloth: Fast downloading is enabled - ignore downloading bars which are red colored!
+model.safetensors: 100%|████████████████████████| 4.44G/4.44G [01:23<00:00, 52.9MB/s]
+generation_config.json: 100%|███████████████████████████████████| 192/192 [00:00<00:00, 1.26MB/s]
+processor_config.json: 100%|███████████████████████████████████| 70.0/70.0 [00:00<00:00, 477kB/s]
+chat_template.json: 100%|███████████████████████████████████| 1.61k/1.61k [00:00<00:00, 10.6MB/s]
+preprocessor_config.json: 100%|█████████████████████████████████| 570/570 [00:00<00:00, 3.67MB/s]
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.50, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+tokenizer_config.json: 100%|████████████████████████████████| 1.16M/1.16M [00:00<00:00, 2.23MB/s]
+tokenizer.model: 100%|██████████████████████████████████████| 4.69M/4.69M [00:00<00:00, 14.0MB/s]
+tokenizer.json: 100%|███████████████████████████████████████| 33.4M/33.4M [00:00<00:00, 53.0MB/s]
+added_tokens.json: 100%|███████████████████████████████████████| 35.0/35.0 [00:00<00:00, 217kB/s]
+special_tokens_map.json: 100%|██████████████████████████████████| 670/670 [00:00<00:00, 5.12MB/s]
+Unsloth: Making `model.base_model.model.language_model.model` require gradients
+Loading and standardizing dataset: mlabonne/FineTome-100k
+README.md: 100%|████████████████████████████████████████████████| 982/982 [00:00<00:00, 9.97MB/s]
+train-00000-of-00001.parquet: 100%|███████████████████████████| 117M/117M [00:01<00:00, 73.9MB/s]
+Generating train split: 100%|█████████████████| 100000/100000 [00:00<00:00, 170723.07 examples/s]
+Unsloth: Standardizing formats (num_proc=12): 100%|█| 100000/100000 [00:00<00:00, 131685.32 examp
+
+Displaying entry 100 from dataset post standardization:
+
+{'conversations': [{'content': 'What is the modulus operator in programming and how can I use it to calculate the modulus of two given numbers?', 'role': 'user'}, {'content': 'In programming, the modulus operator is represented by the \'%\' symbol. It calculates the remainder when one number is divided by another. To calculate the modulus of two given numbers, you can use the modulus operator in the following way:\n\n```python\n# Calculate the modulus\nModulus = a % b\n\nprint("Modulus of the given numbers is: ", Modulus)\n```\n\nIn this code snippet, the variables \'a\' and \'b\' represent the two given numbers for which you want to calculate the modulus. By using the modulus operator \'%\', we calculate the remainder when \'a\' is divided by \'b\'. The result is then stored in the variable \'Modulus\'. Finally, the modulus value is printed using the \'print\' statement.\n\nFor example, if \'a\' is 10 and \'b\' is 4, the modulus calculation would be 10 % 4, which equals 2. Therefore, the output of the above code would be:\n\n```\nModulus of the given numbers is: 2\n```\n\nThis means that the modulus of 10 and 4 is 2.', 'role': 'assistant'}], 'source': 'infini-instruct-top-500k', 'score': 4.774171352386475}
+Applying chat template to dataset
+Map: 100%|█████████████████████████████████████| 100000/100000 [00:07<00:00, 12863.19 examples/s]
+Displaying element 100 after applying chat template: <bos><start_of_turn>user
+What is the modulus operator in programming and how can I use it to calculate the modulus of two given numbers?<end_of_turn>
+<start_of_turn>model
+In programming, the modulus operator is represented by the '%' symbol. It calculates the remainder when one number is divided by another. To calculate the modulus of two given numbers, you can use the modulus operator in the following way:
+
+```python
+# Calculate the modulus
+Modulus = a % b
+
+print("Modulus of the given numbers is: ", Modulus)
+```
+
+In this code snippet, the variables 'a' and 'b' represent the two given numbers for which you want to calculate the modulus. By using the modulus operator '%', we calculate the remainder when 'a' is divided by 'b'. The result is then stored in the variable 'Modulus'. Finally, the modulus value is printed using the 'print' statement.
+
+For example, if 'a' is 10 and 'b' is 4, the modulus calculation would be 10 % 4, which equals 2. Therefore, the output of the above code would be:
+
+```
+Modulus of the given numbers is: 2
+```
+
+This means that the modulus of 10 and 4 is 2.<end_of_turn>
+
+Wiring SFTTrainer...
+Unsloth: We found double BOS tokens - we shall remove one automatically.
+Unsloth: Tokenizing ["text"] (num_proc=12): 100%|█| 100000/100000 [00:27<00:00, 3694.10 examples/
+Map (num_proc=12): 100%|███████████████████████| 100000/100000 [00:08<00:00, 12228.26 examples/s]
+GPU = NVIDIA GeForce RTX 3060. Max memory = 11.656 GB.
+4.225 GB of memory reserved.
+Starting training...
+==((====))==  Unsloth - 2x faster free finetuning | Num GPUs used = 1
+   \\   /|    Num examples = 100,000 | Num Epochs = 1 | Total steps = 30
+O^O/ \_/ \    Batch size per device = 2 | Gradient accumulation steps = 4
+\        /    Data Parallel GPUs = 1 | Total batch size (2 x 4 x 1) = 8
+ "-____-"     Trainable parameters = 14,901,248/4,000,000,000 (0.37% trained)
+  0%|                                                                     | 0/30 [00:00<?, ?it/s]Unsloth: Will smartly offload gradients to save VRAM!
+{'loss': 1.2196, 'grad_norm': 152.3275146484375, 'learning_rate': 4e-05, 'epoch': 0.0}           
+{'loss': 1.6709, 'grad_norm': 1.589703917503357, 'learning_rate': 8e-05, 'epoch': 0.0}           
+{'loss': 1.7624, 'grad_norm': 1.2947295904159546, 'learning_rate': 0.00012, 'epoch': 0.0}        
+{'loss': 1.4087, 'grad_norm': 0.9972782135009766, 'learning_rate': 0.00016, 'epoch': 0.0}        
+{'loss': 1.189, 'grad_norm': 1.0399739742279053, 'learning_rate': 0.0002, 'epoch': 0.0}          
+{'loss': 1.5884, 'grad_norm': 1.627265453338623, 'learning_rate': 0.000192, 'epoch': 0.0}        
+{'loss': 0.8268, 'grad_norm': 0.72067791223526, 'learning_rate': 0.00018400000000000003, 'epoch': 0.0}
+{'loss': 1.2074, 'grad_norm': 1.2082093954086304, 'learning_rate': 0.00017600000000000002, 'epoch': 0.0}
+{'loss': 0.938, 'grad_norm': 2.5373449325561523, 'learning_rate': 0.000168, 'epoch': 0.0}        
+{'loss': 0.8366, 'grad_norm': 0.49831417202949524, 'learning_rate': 0.00016, 'epoch': 0.0}                                                 
+{'loss': 0.9477, 'grad_norm': 0.32066652178764343, 'learning_rate': 0.000152, 'epoch': 0.0}                                                                
+{'loss': 1.1188, 'grad_norm': 0.41381388902664185, 'learning_rate': 0.000144, 'epoch': 0.0}                                                                
+{'loss': 1.0213, 'grad_norm': 0.38632774353027344, 'learning_rate': 0.00013600000000000003, 'epoch': 0.0}                                                  
+{'loss': 0.6836, 'grad_norm': 0.3729236423969269, 'learning_rate': 0.00012800000000000002, 'epoch': 0.0}                                                   
+{'loss': 0.9341, 'grad_norm': 0.39071759581565857, 'learning_rate': 0.00012, 'epoch': 0.0}                                                                 
+{'loss': 0.6994, 'grad_norm': 1.3404349088668823, 'learning_rate': 0.00011200000000000001, 'epoch': 0.0}                                                   
+{'loss': 1.1003, 'grad_norm': 0.4446246325969696, 'learning_rate': 0.00010400000000000001, 'epoch': 0.0}                                                   
+{'loss': 0.8842, 'grad_norm': 0.46393147110939026, 'learning_rate': 9.6e-05, 'epoch': 0.0}                                                                 
+{'loss': 0.8243, 'grad_norm': 0.3422239422798157, 'learning_rate': 8.800000000000001e-05, 'epoch': 0.0}                                                    
+{'loss': 1.0072, 'grad_norm': 0.36444202065467834, 'learning_rate': 8e-05, 'epoch': 0.0}                                                                   
+{'loss': 0.8942, 'grad_norm': 0.3243534564971924, 'learning_rate': 7.2e-05, 'epoch': 0.0}                                                                  
+{'loss': 0.8484, 'grad_norm': 0.27434322237968445, 'learning_rate': 6.400000000000001e-05, 'epoch': 0.0}                                                   
+{'loss': 1.0048, 'grad_norm': 0.18900054693222046, 'learning_rate': 5.6000000000000006e-05, 'epoch': 0.0}                                                  
+{'loss': 0.9625, 'grad_norm': 0.3894321620464325, 'learning_rate': 4.8e-05, 'epoch': 0.0}                                                                  
+{'loss': 0.6556, 'grad_norm': 57.05101013183594, 'learning_rate': 4e-05, 'epoch': 0.0}                                                                     
+{'loss': 0.825, 'grad_norm': 0.28635352849960327, 'learning_rate': 3.2000000000000005e-05, 'epoch': 0.0}                                                   
+{'loss': 0.8439, 'grad_norm': 0.34137025475502014, 'learning_rate': 2.4e-05, 'epoch': 0.0}                                                                 
+{'loss': 0.8292, 'grad_norm': 0.3405131697654724, 'learning_rate': 1.6000000000000003e-05, 'epoch': 0.0}                                                   
+{'loss': 1.0793, 'grad_norm': 0.31553390622138977, 'learning_rate': 8.000000000000001e-06, 'epoch': 0.0}                                                   
+{'loss': 1.0446, 'grad_norm': 0.3270202577114105, 'learning_rate': 0.0, 'epoch': 0.0}                                                                      
+{'train_runtime': 299.6203, 'train_samples_per_second': 0.801, 'train_steps_per_second': 0.1, 'train_loss': 1.0285381476084392, 'epoch': 0.0}              
+100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 30/30 [04:59<00:00,  9.99s/it]
+Displaying post training memory stats.
+299.6203 seconds used for training.
+4.99 minutes used for training.
+Peak reserved memory = 6.057 GB.
+Peak reserved memory for training = 1.832 GB.
+Peak reserved memory % of max memory = 51.965 %.
+Peak reserved memory for training % of max memory = 15.717 %.
+Saving fine-tuned LORA adapters
+Downloading safetensors index for unsloth/gemma-3-4b-it...
+model.safetensors.index.json: 100%|████████████████████████████████████████████████████████████████| 90.6k/90.6k [00:00<00:00, 2.96MB/s]
+Fetching 1 files: 100%|███████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00<00:00,  1.87it/s]
+Unsloth: Merging weights into 16bit:   0%|                                                                        | 0/2 [00:00<?, ?it/s]
+model-00001-of-00002.safetensors: 100%|███████████████████████████████████████████████████████████▉| 4.96G/4.96G [01:56<00:00, 53.2MB/s]
+Unsloth: Merging weights into 16bit:  50%|███████████████████████████████▌                               | 1/2 [02:07<02:07, 127.45s/it]
+Unsloth: Merging weights into 16bit: 100%|███████████████████████████████████████████████████████████████| 2/2 [03:40<00:00, 110.18s/it]

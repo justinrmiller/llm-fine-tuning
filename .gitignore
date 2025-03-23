@@ -172,3 +172,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+gemma3/training/gemma-3
+gemma3/training/gemma-3-finetune
+gemma3/training/unsloth_compiled_cache
+gemma3/training/unsloth_training_checkpoints
+
+gemma3/training/jrmiller
